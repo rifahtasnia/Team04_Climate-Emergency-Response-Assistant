@@ -5,6 +5,7 @@ Streamlit app for emergency coordinators to monitor flood alerts,
 volunteer availability, and response coverage.
 """
 
+import math
 
 import pandas as pd
 import plotly.express as px
@@ -58,6 +59,129 @@ SAMPLE_DATA_PATH = Path(__file__).parent / "sample_data.xlsx"
 # Sheet name aliases (case-insensitive partial match)
 ALERT_SHEET_KEYWORDS = ("flood", "alert")
 VOLUNTEER_SHEET_KEYWORDS = ("volunteer",)
+SAFE_PLACE_SHEET_KEYWORDS = ("safe", "shelter", "evacuation")
+
+# Fallback coordinates for Montreal-area locations (when Excel has no lat/lon)
+LOCATION_COORDINATES = {
+    "Ahuntsic": (45.55629, -73.65421),
+    "Downtown Montreal": (45.51085, -73.57027),
+    "Hochelaga": (45.55382, -73.55000),
+    "LaSalle": (45.43322, -73.62556),
+    "Laval": (45.60689, -73.72467),
+    "Longueuil": (45.53768, -73.51206),
+    "NDG": (45.47720, -73.60253),
+    "Outremont": (45.51843, -73.61738),
+    "Plateau": (45.53405, -73.57743),
+    "Saint-Laurent": (45.50368, -73.70826),
+    "Verdun": (45.45506, -73.56229),
+    "West Island": (45.43976, -73.84738),
+}
+
+# Default safe evacuation sites used when no Safe Places sheet is in the Excel file
+DEFAULT_SAFE_PLACES = pd.DataFrame(
+    [
+        {
+            "Place ID": "SP-001",
+            "Name": "Montreal Convention Centre Emergency Shelter",
+            "Address": "1001 Place Jean-Paul-Riopelle, Montreal",
+            "Location Area": "Downtown Montreal",
+            "Latitude": 45.5055,
+            "Longitude": -73.5610,
+            "Capacity": 500,
+            "Type": "Emergency Shelter",
+        },
+        {
+            "Place ID": "SP-002",
+            "Name": "Olympic Stadium Evacuation Centre",
+            "Address": "4545 Pierre-de-Coubertin Ave, Montreal",
+            "Location Area": "Hochelaga",
+            "Latitude": 45.5579,
+            "Longitude": -73.5517,
+            "Capacity": 1000,
+            "Type": "Mega Shelter",
+        },
+        {
+            "Place ID": "SP-003",
+            "Name": "Centre Claude-Robillard Community Hub",
+            "Address": "1000 Emery St, Montreal",
+            "Location Area": "Ahuntsic",
+            "Latitude": 45.5470,
+            "Longitude": -73.6520,
+            "Capacity": 300,
+            "Type": "Community Centre",
+        },
+        {
+            "Place ID": "SP-004",
+            "Name": "Laval Emergency Reception Centre",
+            "Address": "1300 Laval Blvd, Laval",
+            "Location Area": "Laval",
+            "Latitude": 45.6060,
+            "Longitude": -73.7120,
+            "Capacity": 400,
+            "Type": "Emergency Shelter",
+        },
+        {
+            "Place ID": "SP-005",
+            "Name": "Longueuil Civic Centre Safe Zone",
+            "Address": "1500 De Gentilly Blvd, Longueuil",
+            "Location Area": "Longueuil",
+            "Latitude": 45.5310,
+            "Longitude": -73.5180,
+            "Capacity": 350,
+            "Type": "Civic Centre",
+        },
+        {
+            "Place ID": "SP-006",
+            "Name": "Saint-Laurent Community Shelter",
+            "Address": "8255 Ave Marcel-Laurin, Saint-Laurent",
+            "Location Area": "Saint-Laurent",
+            "Latitude": 45.5080,
+            "Longitude": -73.6950,
+            "Capacity": 250,
+            "Type": "Community Centre",
+        },
+        {
+            "Place ID": "SP-007",
+            "Name": "West Island Emergency Reception",
+            "Address": "200 Blvd St-Jean, Pointe-Claire",
+            "Location Area": "West Island",
+            "Latitude": 45.4480,
+            "Longitude": -73.8150,
+            "Capacity": 300,
+            "Type": "Emergency Shelter",
+        },
+        {
+            "Place ID": "SP-008",
+            "Name": "Verdun Recreation Centre Safe Point",
+            "Address": "5955 Bannantyne Ave, Verdun",
+            "Location Area": "Verdun",
+            "Latitude": 45.4580,
+            "Longitude": -73.5710,
+            "Capacity": 200,
+            "Type": "Recreation Centre",
+        },
+        {
+            "Place ID": "SP-009",
+            "Name": "Outremont High-Ground Assembly Point",
+            "Address": "999 Ave Bloomfield, Outremont",
+            "Location Area": "Outremont",
+            "Latitude": 45.5220,
+            "Longitude": -73.6100,
+            "Capacity": 150,
+            "Type": "Assembly Point",
+        },
+        {
+            "Place ID": "SP-010",
+            "Name": "NDG Community Safe Haven",
+            "Address": "4333 Cote-St-Antoine Rd, Montreal",
+            "Location Area": "NDG",
+            "Latitude": 45.4810,
+            "Longitude": -73.5980,
+            "Capacity": 220,
+            "Type": "Community Centre",
+        },
+    ]
+)
 
 
 # ---------------------------------------------------------------------------
@@ -162,6 +286,29 @@ def normalize_volunteers_df(df: pd.DataFrame) -> pd.DataFrame:
 
 def load_excel_data(source) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Load Flood Alerts and Volunteers sheets from an Excel file or buffer."""
+    alerts, volunteers, _ = load_all_data(source)
+    return alerts, volunteers
+
+
+def load_safe_places(source, sheet_names: list[str]) -> pd.DataFrame:
+    """Load safe places from Excel sheet or return defaults."""
+    safe_sheet = find_sheet_name(sheet_names, SAFE_PLACE_SHEET_KEYWORDS)
+    if safe_sheet is None:
+        return DEFAULT_SAFE_PLACES.copy()
+
+    df = clean_column_names(pd.read_excel(source, sheet_name=safe_sheet))
+    required = ["Place ID", "Name", "Latitude", "Longitude", "Capacity"]
+    missing = [col for col in required if col not in df.columns]
+    if missing:
+        st.warning(
+            f"Safe Places sheet missing columns {', '.join(missing)}. Using default safe places."
+        )
+        return DEFAULT_SAFE_PLACES.copy()
+    return df
+
+
+def load_all_data(source) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Load Flood Alerts, Volunteers, and Safe Places from an Excel file or buffer."""
     xl = pd.ExcelFile(source)
     sheet_names = xl.sheet_names
 
@@ -181,8 +328,9 @@ def load_excel_data(source) -> tuple[pd.DataFrame, pd.DataFrame]:
 
     alerts_raw = pd.read_excel(source, sheet_name=alert_sheet)
     volunteers_raw = pd.read_excel(source, sheet_name=volunteer_sheet)
+    safe_places = load_safe_places(source, sheet_names)
 
-    return normalize_alerts_df(alerts_raw), normalize_volunteers_df(volunteers_raw)
+    return normalize_alerts_df(alerts_raw), normalize_volunteers_df(volunteers_raw), safe_places
 
 
 def coerce_numeric_columns(alerts: pd.DataFrame, volunteers: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -193,6 +341,10 @@ def coerce_numeric_columns(alerts: pd.DataFrame, volunteers: pd.DataFrame) -> tu
     for col in ["Number of People", "Volunteers Needed"]:
         if col in alerts.columns:
             alerts[col] = pd.to_numeric(alerts[col], errors="coerce").fillna(0).astype(int)
+
+    for col in ["Latitude", "Longitude"]:
+        if col in alerts.columns:
+            alerts[col] = pd.to_numeric(alerts[col], errors="coerce")
 
     for col in ["Alert Level", "Location", "Service Needed", "Alert Type", "Alert ID"]:
         if col in alerts.columns:
@@ -205,6 +357,140 @@ def coerce_numeric_columns(alerts: pd.DataFrame, volunteers: pd.DataFrame) -> tu
             volunteers[col] = volunteers[col].replace({"nan": "", "None": ""})
 
     return alerts, volunteers
+
+
+def enrich_alerts_with_coordinates(alerts: pd.DataFrame) -> pd.DataFrame:
+    """Fill missing Latitude/Longitude using the location lookup table."""
+    df = alerts.copy()
+    if "Latitude" not in df.columns:
+        df["Latitude"] = pd.NA
+    if "Longitude" not in df.columns:
+        df["Longitude"] = pd.NA
+
+    for idx, row in df.iterrows():
+        if pd.isna(row["Latitude"]) or pd.isna(row["Longitude"]):
+            coords = LOCATION_COORDINATES.get(row["Location"])
+            if coords:
+                df.at[idx, "Latitude"] = coords[0]
+                df.at[idx, "Longitude"] = coords[1]
+
+    return df
+
+
+def alerts_needing_evacuation(alerts: pd.DataFrame) -> pd.DataFrame:
+    """Return alerts that include Evacuation in Service Needed."""
+    mask = alerts["Service Needed"].apply(
+        lambda x: "Evacuation" in [s.strip() for s in str(x).split(",")]
+    )
+    return sort_alerts_by_priority(alerts[mask].copy())
+
+
+# ---------------------------------------------------------------------------
+# Evacuation planning
+# ---------------------------------------------------------------------------
+
+
+def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Calculate distance in kilometres between two GPS points."""
+    radius_km = 6371.0
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    d_phi = math.radians(lat2 - lat1)
+    d_lambda = math.radians(lon2 - lon1)
+    a = (
+        math.sin(d_phi / 2) ** 2
+        + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2) ** 2
+    )
+    return 2 * radius_km * math.asin(math.sqrt(a))
+
+
+def find_nearest_safe_places(
+    lat: float, lon: float, safe_places: pd.DataFrame, top_n: int = 3
+) -> pd.DataFrame:
+    """Return the nearest safe places sorted by distance."""
+    places = safe_places.copy()
+    places["Distance (km)"] = places.apply(
+        lambda row: haversine_km(lat, lon, row["Latitude"], row["Longitude"]),
+        axis=1,
+    )
+    return places.sort_values("Distance (km)").head(top_n).reset_index(drop=True)
+
+
+def build_evacuation_plan(
+    alerts: pd.DataFrame, safe_places: pd.DataFrame
+) -> pd.DataFrame:
+    """
+    Build an evacuation plan assigning the nearest safe places to each alert
+    that requires evacuation.
+    """
+    evac_alerts = enrich_alerts_with_coordinates(alerts_needing_evacuation(alerts))
+    rows = []
+
+    for _, alert in evac_alerts.iterrows():
+        lat, lon = alert["Latitude"], alert["Longitude"]
+        if pd.isna(lat) or pd.isna(lon):
+            rows.append(
+                {
+                    "Alert ID": alert["Alert ID"],
+                    "Alert Level": alert["Alert Level"],
+                    "Location": alert["Location"],
+                    "People to Evacuate": int(alert["Number of People"]),
+                    "Volunteers Needed": int(alert["Volunteers Needed"]),
+                    "Nearest Safe Place": "Unknown — no coordinates",
+                    "Distance (km)": None,
+                    "Place Capacity": None,
+                    "Address": "—",
+                    "2nd Nearest Option": "—",
+                    "3rd Nearest Option": "—",
+                    "Capacity Status": "Unknown",
+                }
+            )
+            continue
+
+        nearest = find_nearest_safe_places(float(lat), float(lon), safe_places, top_n=3)
+        best = nearest.iloc[0]
+        people = int(alert["Number of People"])
+        capacity_ok = best["Capacity"] >= people
+
+        rows.append(
+            {
+                "Alert ID": alert["Alert ID"],
+                "Alert Level": alert["Alert Level"],
+                "Location": alert["Location"],
+                "People to Evacuate": people,
+                "Volunteers Needed": int(alert["Volunteers Needed"]),
+                "Nearest Safe Place": best["Name"],
+                "Distance (km)": round(best["Distance (km)"], 2),
+                "Place Capacity": int(best["Capacity"]),
+                "Address": best.get("Address", "—"),
+                "2nd Nearest Option": (
+                    f"{nearest.iloc[1]['Name']} ({nearest.iloc[1]['Distance (km)']:.1f} km)"
+                    if len(nearest) > 1
+                    else "—"
+                ),
+                "3rd Nearest Option": (
+                    f"{nearest.iloc[2]['Name']} ({nearest.iloc[2]['Distance (km)']:.1f} km)"
+                    if len(nearest) > 2
+                    else "—"
+                ),
+                "Capacity Status": "Sufficient" if capacity_ok else "Insufficient — use backup",
+                "Latitude": float(lat),
+                "Longitude": float(lon),
+                "Safe Place Lat": best["Latitude"],
+                "Safe Place Lon": best["Longitude"],
+            }
+        )
+
+    plan = pd.DataFrame(rows)
+    if plan.empty:
+        return plan
+
+    plan["_priority"] = plan["Alert Level"].map(ALERT_LEVEL_ORDER).fillna(99)
+    plan = plan.sort_values(
+        by=["_priority", "People to Evacuate"],
+        ascending=[True, False],
+    ).drop(columns=["_priority"], errors="ignore")
+
+    return plan.reset_index(drop=True)
 
 
 def explode_alert_services(alerts: pd.DataFrame) -> pd.DataFrame:
@@ -773,6 +1059,150 @@ def render_matching_tab(connection_df: pd.DataFrame):
         )
 
 
+def render_evacuation_tab(evacuation_plan: pd.DataFrame, safe_places: pd.DataFrame):
+    """Tab: Evacuation plans with nearest safe places for alerts needing evacuation."""
+    st.subheader("Evacuation Plans")
+    st.caption(
+        "Recommended nearest safe places for people who need evacuation, "
+        "sorted by alert priority and distance."
+    )
+
+    if evacuation_plan.empty:
+        st.info("No alerts currently require evacuation.")
+        return
+
+    total_people = int(evacuation_plan["People to Evacuate"].sum())
+    insufficient = (evacuation_plan["Capacity Status"] == "Insufficient — use backup").sum()
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Evacuation Alerts", len(evacuation_plan))
+    c2.metric("People to Evacuate", total_people)
+    c3.metric("Safe Places Available", len(safe_places))
+    c4.metric("Capacity Warnings", insufficient)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        level_filter = st.multiselect(
+            "Alert Level",
+            options=sorted(evacuation_plan["Alert Level"].unique()),
+            default=[],
+            key="evac_level",
+        )
+    with col2:
+        loc_filter = st.multiselect(
+            "Location",
+            options=sorted(evacuation_plan["Location"].unique()),
+            default=[],
+            key="evac_location",
+        )
+
+    filtered = evacuation_plan.copy()
+    if level_filter:
+        filtered = filtered[filtered["Alert Level"].isin(level_filter)]
+    if loc_filter:
+        filtered = filtered[filtered["Location"].isin(loc_filter)]
+
+    display_cols = [
+        "Alert ID",
+        "Alert Level",
+        "Location",
+        "People to Evacuate",
+        "Nearest Safe Place",
+        "Distance (km)",
+        "Place Capacity",
+        "Capacity Status",
+        "Address",
+        "2nd Nearest Option",
+        "3rd Nearest Option",
+    ]
+    st.markdown("#### Evacuation Assignments")
+    st.caption(f"Showing {len(filtered)} evacuation plans")
+    st.dataframe(
+        style_alert_table(filtered[[c for c in display_cols if c in filtered.columns]]),
+        use_container_width=True,
+        hide_index=True,
+    )
+
+    # Map: alert locations and safe places
+    st.markdown("#### Evacuation Map")
+    map_rows = []
+    for _, row in filtered.iterrows():
+        if pd.notna(row.get("Latitude")) and pd.notna(row.get("Longitude")):
+            map_rows.append(
+                {
+                    "Name": f"{row['Alert ID']} — {row['Location']}",
+                    "Latitude": row["Latitude"],
+                    "Longitude": row["Longitude"],
+                    "Type": "Evacuation Needed",
+                    "Size": row["People to Evacuate"],
+                }
+            )
+            if pd.notna(row.get("Safe Place Lat")):
+                map_rows.append(
+                    {
+                        "Name": row["Nearest Safe Place"],
+                        "Latitude": row["Safe Place Lat"],
+                        "Longitude": row["Safe Place Lon"],
+                        "Type": "Nearest Safe Place",
+                        "Size": row.get("Place Capacity", 100),
+                    }
+                )
+
+    for _, place in safe_places.iterrows():
+        map_rows.append(
+            {
+                "Name": place["Name"],
+                "Latitude": place["Latitude"],
+                "Longitude": place["Longitude"],
+                "Type": "Safe Place",
+                "Size": place["Capacity"],
+            }
+        )
+
+    if map_rows:
+        map_df = pd.DataFrame(map_rows)
+        color_map = {
+            "Evacuation Needed": "#DC3545",
+            "Nearest Safe Place": "#28A745",
+            "Safe Place": "#0D6EFD",
+        }
+        fig = px.scatter_map(
+            map_df,
+            lat="Latitude",
+            lon="Longitude",
+            color="Type",
+            size="Size",
+            hover_name="Name",
+            zoom=10,
+            title="Evacuation Alerts and Safe Places",
+            color_discrete_map=color_map,
+        )
+        fig.update_layout(margin=dict(t=40, b=20, l=20, r=20))
+        st.plotly_chart(fig, use_container_width=True)
+
+    # Per-alert evacuation detail cards
+    st.markdown("#### Evacuation Instructions")
+    for _, row in filtered.head(15).iterrows():
+        with st.expander(
+            f"{row['Alert ID']} — {row['Location']} → {row['Nearest Safe Place']}"
+        ):
+            st.markdown(f"**Alert Level:** {row['Alert Level']}")
+            st.markdown(f"**People to evacuate:** {row['People to Evacuate']}")
+            st.markdown(f"**Primary destination:** {row['Nearest Safe Place']}")
+            st.markdown(f"**Distance:** {row['Distance (km)']} km")
+            st.markdown(f"**Address:** {row['Address']}")
+            st.markdown(f"**Shelter capacity:** {row['Place Capacity']} people")
+            st.markdown(f"**Capacity check:** {row['Capacity Status']}")
+            if row["2nd Nearest Option"] != "—":
+                st.markdown(f"**Backup option 1:** {row['2nd Nearest Option']}")
+            if row["3rd Nearest Option"] != "—":
+                st.markdown(f"**Backup option 2:** {row['3rd Nearest Option']}")
+            st.markdown(
+                "**Recommended action:** Direct affected residents to the nearest safe place. "
+                "Deploy evacuation volunteers to assist transport if volunteers are available."
+            )
+
+
 def render_report_tab(
     alerts_df: pd.DataFrame,
     volunteers_df: pd.DataFrame,
@@ -861,10 +1291,10 @@ def main():
 
     try:
         if uploaded_file is not None:
-            alerts_df, volunteers_df = load_excel_data(uploaded_file)
+            alerts_df, volunteers_df, safe_places_df = load_all_data(uploaded_file)
             st.sidebar.success("Excel file loaded successfully.")
         elif use_sample and SAMPLE_DATA_PATH.exists():
-            alerts_df, volunteers_df = load_excel_data(SAMPLE_DATA_PATH)
+            alerts_df, volunteers_df, safe_places_df = load_all_data(SAMPLE_DATA_PATH)
             st.sidebar.info("Using sample_data.xlsx")
         elif use_sample:
             st.sidebar.warning("sample_data.xlsx not found. Please upload an Excel file.")
@@ -889,6 +1319,7 @@ def main():
             st.stop()
 
         alerts_df, volunteers_df = coerce_numeric_columns(alerts_df, volunteers_df)
+        alerts_df = enrich_alerts_with_coordinates(alerts_df)
 
         # Drop alerts with no services listed
         alerts_df = alerts_df[alerts_df["Service Needed"].str.len() > 0].copy()
@@ -900,6 +1331,7 @@ def main():
         # Build response table and KPIs
         response_df = build_response_table(alerts_df, volunteers_df)
         connection_df = build_connection_table(alerts_df, volunteers_df)
+        evacuation_plan = build_evacuation_plan(alerts_df, safe_places_df)
         kpis = compute_kpis(alerts_df, volunteers_df)
 
     except ValueError as exc:
@@ -910,11 +1342,12 @@ def main():
         st.stop()
 
     # --- Tabbed interface ---
-    tab_requests, tab_volunteers, tab_matching, tab_report = st.tabs(
+    tab_requests, tab_volunteers, tab_matching, tab_evacuation, tab_report = st.tabs(
         [
             "Requests",
             "Volunteers",
             "Matching",
+            "Evacuation Plans",
             "Report & Summary",
         ]
     )
@@ -927,6 +1360,9 @@ def main():
 
     with tab_matching:
         render_matching_tab(connection_df)
+
+    with tab_evacuation:
+        render_evacuation_tab(evacuation_plan, safe_places_df)
 
     with tab_report:
         render_report_tab(
