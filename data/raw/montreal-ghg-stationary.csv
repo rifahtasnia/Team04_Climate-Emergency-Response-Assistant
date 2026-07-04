@@ -1,0 +1,152 @@
+Year,Sector,GPC ref No.,Scope,Category,Sub-category,Activity,Description,CO2,CH4,N2O,Total tCO2e,CO2(b),Data Quality
+1990,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,770717,378,4260,775355,,H
+1990,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,1657182,391,1076,1658649,,M
+1990,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,157919,20079,177998,714217,M
+1990,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,143456,0,H
+1990,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1549698,760,8566,1559024,0,H
+1990,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,469738,111,1576,471425,0,M
+1990,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,83646,38,505,84189,0,M
+1990,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,52203,21,1109,53333,0,L
+1990,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,21357,79,35797,57234,59693,H
+1990,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,138209,0,H
+1990,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),All fuel consumed for Manufacturing and construction,1115508,578,6141,1451494,9124,H
+1990,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Manufacturing industries and construction (1.A.2),Electricity,Electricity consumed for manufacturing and construction,6750,0,168,54462,0,H
+1990,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,2158815,2716,9952,2171482,0,H
+1990,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Natural Gas,Distribution (1.B.2.b.iii.5),Fugitive emissions from natural gas distribution,10,14468,0,14478,0,M
+1990,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Production (1.B.2.b.iii.2),Fugitive emissions from  oil production and flaring,135081,38,215,135333,0,H
+2015,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,765513,368,4146,770026,0,H
+2015,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,151224,36,98,151358,0,M
+2015,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,13326,3231,16557,139041,M
+2015,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),22797,10,484,23291,0,L
+2015,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,6802,,H
+2015,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1389339,667,7524,1397531,0,H
+2015,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,230489,54,773,231317,0,M
+2015,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,4677,2,28,4707,0,M
+2015,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,129147,51,2744,131942,0,L
+2015,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,22906,105,56465,79476,105518,H
+2015,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,0,0,0,0,H
+2015,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,6605,,H
+2015,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,253571,122,1295,254988,0,H
+2015,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,850464,630,4331,855425,12324,H
+2015,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,2092,0,H
+2015,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,1205941,46,4989,1210975,0,H
+2015,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",94535,1927,1779,98241,0,M
+2016,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,768852,369,4164,773385,0,H
+2016,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,164221,39,107,164366,0,M
+2016,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,12241,2968,15209,127723,M
+2016,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),24183,11,514,24707,0,L
+2016,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,6644,,H
+2016,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1390585,668,7531,1398784,0,H
+2016,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,185357,44,622,186023,0,M
+2016,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,7005,3,42,7051,0,M
+2016,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,134126,53,2849,137028,0,L
+2016,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,21741,100,53640,75481,100372,H
+2016,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,0,0,0,0,H
+2016,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,6389,,H
+2016,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,277508,133,1417,279059,0,H
+2016,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,867040,1023,4405,872469,9124,H
+2016,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,2013,,H
+2016,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,1165285,43,4963,1170292,0,H
+2016,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",82571,3951,1782,88304,0,M
+2017,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,805098,387,4360,809845,0,H
+2017,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,123587,29,80,123697,0,M
+2017,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,11583,2808,14392,120859,M
+2017,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),22863,10,486,23359,0,L
+2017,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,6699,,H
+2017,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1342616,645,7271,1350532,0,H
+2017,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,199844,47,671,200562,0,M
+2017,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,13885,6,84,13975,0,M
+2017,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,124403,49,2643,127095,0,L
+2017,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,23515,109,58706,82330,109806,H
+2017,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,0,0,0,0,H
+2017,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,6381,,H
+2017,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,436587,210,2229,439026,0,H
+2017,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,860341,1235,4519,866095,7372,H
+2017,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,2022,,H
+2017,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,1237802,61,5145,1243007,0,H
+2017,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",117508,10201,1281,128990,0,M
+2018,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,776947,373,4208,781528,0,H
+2018,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,119876,28,78,119983,0,M
+2018,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,12320,2987,15307,128546,M
+2018,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),24514,11,521,25045,0,L
+2018,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,7108,,H
+2018,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1348648,648,7304,1356600,0,H
+2018,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,200403,47,672,201123,0,M
+2018,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,6962,3,42,7007,0,M
+2018,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,133295,53,2832,136180,0,L
+2018,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,24757,176,53044,77977,123666,H
+2018,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,1,10,11,1912,H
+2018,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,6603,,H
+2018,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,836927,402,4274,841602,0,H
+2018,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,740553,1143,3667,745364,3765,H
+2018,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,2042,,H
+2018,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,928230,9075,3920,941224,0,H
+2018,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",297596,19741,549,317886,0,M
+2019,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,777955,374,4213,782542,0,H
+2019,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,113514,27,74,113614,0,M
+2019,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,12565,3046,15611,131099,M
+2019,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),26123,12,555,26689,0,L
+2019,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,7170,,H
+2019,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1354818,651,7337,1362806,0,H
+2019,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,258037,61,866,258963,0,M
+2019,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,9244,4,56,9304,0,M
+2019,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,139552,55,2965,142572,0,L
+2019,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,25262,141,54344,79747,110514,H
+2019,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,1,12,13,2281,H
+2019,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,6589,,H
+2019,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,956250,459,4883,961592,0,H
+2019,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,681446,1227,3444,686117,5673,H
+2019,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,2001,,H
+2019,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,872484,305,3643,876432,0,H
+2019,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",314683,20566,582,335831,0,M
+2020,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,800138,384,4333,804856,0,H
+2020,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,73510,17,48,73575,0,M
+2020,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,13624,3303,16927,142149,M
+2020,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),19652,9,417,20078,0,L
+2020,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,6862,,H
+2020,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1295841,622,7018,1303482,0,H
+2020,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,30974,7,104,31085,0,M
+2020,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,4420,2,27,4449,0,M
+2020,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,105445,42,2240,107727,0,L
+2020,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,24547,148,54961,79656,97622,H
+2020,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,1,14,16,2654,H
+2020,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,6075,,H
+2020,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,912979,439,4662,918079,0,H
+2020,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,524073,304,2436,526813,3688,H
+2020,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,1930,,H
+2020,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,860832,169,3751,864752,0,H
+2020,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",251381,22397,492,274270,0,M
+2021,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,799308,384,4329,804021,0,H
+2021,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,64927,15,42,64985,0,M
+2021,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,12717,3083,15800,132687,M
+2021,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),19145,9,407,19560,0,L
+2021,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,,,,8126,,H
+2021,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1257402,604,6810,1264816,0,H
+2021,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,30647,7,103,30757,0,M
+2021,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,4351,2,26,4379,0,M
+2021,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,103766,41,2204,106011,0,L
+2021,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,24808,179,54038,79025,97173,H
+2021,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,2,21,23,3856,H
+2021,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,,,,7488,,H
+2021,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,995626,478,5084,1001188,0,H
+2021,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,547209,146,2451,549806,220,H
+2021,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,,,,2341,,H
+2021,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,851969,156,3625,855750,0,H
+2021,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",314821,13759,560,329141,0,M
+2022,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Natural gas,Natural gas consumption from residential heating,779646,374,4222,784243,0,H
+2022,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Gas oil,Light fuel oil consumption for residential heating,64319,15,42,64376,0,M
+2022,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Wood or wood waste,Firewood consumption for residential heating,0,12598,3054,15652,131444,M
+2022,Stationary,I.1.1,1,Emissions from fuel combustion within the city boundary,Residential (1.A.4.b),Propane,Propane consumption (and other fuels),19071,8,405,19484,0,L
+2022,Stationary,I.1.2,2,Emissions from grid-supplied energy consumed within the city boundary,Residential (1.A.4.b),Electricity,Electricity consumption,0,0,0,18122,0,H
+2022,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Natural gas,Natural gas consumption for heating,1297428,623,7027,1305078,0,H
+2022,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Gas oil,Light fuel oil consumption for heating,30647,7,103,30757,0,M
+2022,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other (please specify),Heavy fuel oilconsumption for heating,4351,2,26,4379,0,M
+2022,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Propane,Propane consumpition,103766,41,2204,106011,0,L
+2022,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Institutional,Sewage sludge,Burning of sewage sludge for heating,24808,179,54038,79025,97173,H
+2022,Stationary,I.2.1,1,Emissions from fuel combustion within the city boundary,Commercial / Institutional (I.A.4.a),Other biogas,Renewable Natural Gas comsumption,0,5,60,65,10996,H
+2022,Stationary,I.2.2,2,Emissions from grid-supplied energy consumed within the city boundary,Commercial / Institutional (I.A.4.a),Electricity,Electricity consumption,0,0,0,16947,0,H
+2022,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Natural gas,Natural gas consumption for heating,1079091,518,5510,1085119,0,H
+2022,Stationary,I.3.1,1,Emissions from fuel combustion within the city boundary,Manufacturing industries and construction (1.A.2),Other (please specify),Emissions declared to the government,533684,133,2425,536242,1793,H
+2022,Stationary,I.3.2,2,Emissions from grid-supplied energy consumed within the city boundary,Non-specified industry (1.A.2.m),Electricity,All industries,0,0,0,5003,0,H
+2022,Stationary,I.4.1,1,Emissions from fuel combustion within the city boundary,Other energy industries (1.A.1.c.ii),Other (please specify),All fossil fuels consumed,897060,163,3815,901038,0,H
+2022,Stationary,I.8.1,1,Emissions from fugitive emissions within the city boundary,Oil,Other (please specify) (1.B.2.b.iii.6),"Fugitive emissions from natural gas distribution, oil production and flaring",262711,14141,481,277332,0,M
