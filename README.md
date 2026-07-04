@@ -1,19 +1,18 @@
 # AEGIS
 
-AEGIS is a human-supervised emergency coordination application for municipal
-response teams. It turns fragmented reports into a verified incident, a
-coordinated response plan, a bilingual public warning, and an auditable decision
-record.
+AEGIS is a flood-response network for affected residents, volunteers, shelter
+providers, and municipal or NGO coordinators. It converts fragmented reports
+into prioritized requests, verified resource matches, live routes, public
+guidance, and an auditable human-authorized response.
 
-## Product flow
+## User flows
 
-1. Intake: identify the operator, geocode the incident and staging point, and
-   add incoming reports.
-2. Live Operations: understand the location-specific situation.
-3. Incident Room: verify evidence and priority.
-4. Response Plan: coordinate live routes and required capabilities.
-5. Public Alert: authorize verified bilingual instructions.
-6. Accountability: review AI recommendations and human decisions.
+- **Residents:** request rescue, medical aid, transport, food, accommodation,
+  or power support and view nearby verified capacity.
+- **Volunteers and shelter providers:** register skills, service radius,
+  accessibility, and available space through **Offer support**.
+- **Coordinators:** assess incoming reports, verify community offers, select
+  multiple staging points, match resources, route aid, and authorize action.
 
 ## Start
 
@@ -25,7 +24,9 @@ npm run dev
 
 Open `http://127.0.0.1:5173`.
 
-See [web/README.md](web/README.md) for configuration and checks, and
-[docs/DATA_AUDIT.md](docs/DATA_AUDIT.md) for dataset provenance and usage.
-The proposed resident, volunteer, shelter, and coordinator expansion is in
-[docs/EXPANDED_PRODUCT_FLOW.md](docs/EXPANDED_PRODUCT_FLOW.md).
+See [web/README.md](web/README.md) for configuration and checks,
+[docs/DATA_AUDIT.md](docs/DATA_AUDIT.md) for dataset provenance and usage, and
+[docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) for the presentation flow.
+
+The original Streamlit dashboard from the remote repository is retained in
+`legacy-streamlit/`.
