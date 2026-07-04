@@ -3,6 +3,7 @@ import { ArrowRight, Check, LocateFixed, Search } from 'lucide-react'
 import { useOperations } from '../state/OperationsContext'
 import { useResponseNetwork } from '../state/ResponseNetworkContext'
 import type { CityProfile } from '../types'
+import { fetchApiJson } from '../utils/api'
 import { distanceKm } from '../utils/geo'
 
 export function LocationSearch({
@@ -39,9 +40,9 @@ export function LocationSearch({
     onSelect(null)
     setError('')
     try {
-      const response = await fetch(`/api/geocode?q=${encodeURIComponent(query.trim())}`)
-      const data = await response.json()
-      if (!response.ok) throw new Error(data.error ?? 'Location search failed')
+      const data = await fetchApiJson<CityProfile[]>(
+        `/api/geocode?q=${encodeURIComponent(query.trim())}`,
+      )
       setResults(data)
       if (!data.length) setError('No matching locations found. Add a region or country.')
     } catch (reason) {
@@ -63,9 +64,7 @@ export function LocationSearch({
         lat: String(suggestionOrigin.coordinate.lat),
         lng: String(suggestionOrigin.coordinate.lng),
       })
-      const response = await fetch(`/api/staging-sites?${parameters}`)
-      const data = await response.json()
-      if (!response.ok) throw new Error(data.error ?? 'Site search failed')
+      const data = await fetchApiJson<CityProfile[]>(`/api/staging-sites?${parameters}`)
       setResults(data)
       if (!data.length) {
         setError('No nearby public-safety sites were found. Search for a known depot or station.')
@@ -174,9 +173,7 @@ function StagingCandidates({
           lat: String(incidentLocation.coordinate.lat),
           lng: String(incidentLocation.coordinate.lng),
         })
-        const response = await fetch(`/api/staging-sites?${parameters}`)
-        const data = await response.json()
-        if (!response.ok) throw new Error(data.error ?? 'Site search failed')
+        const data = await fetchApiJson<CityProfile[]>(`/api/staging-sites?${parameters}`)
         const ordered = [...data].sort(
           (a: CityProfile, b: CityProfile) =>
             distanceKm(incidentLocation.coordinate, a.coordinate) -
