@@ -5,12 +5,11 @@ Streamlit app for emergency coordinators to monitor flood alerts,
 volunteer availability, and response coverage.
 """
 
-import io
-from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from pathlib import Path
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -226,14 +225,20 @@ def explode_alert_services(alerts: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 
-def count_matched_volunteers(location: str, service: str, volunteers: pd.DataFrame) -> int:
-    """Count available volunteers matching location and service type."""
+def get_matched_volunteers(location: str, service: str, volunteers: pd.DataFrame) -> pd.DataFrame:
+    """Return available volunteers matching location and service type."""
     mask = (
         (volunteers["Status"] == "Available")
         & (volunteers["Location"] == location)
         & (volunteers["Service Type"] == service)
     )
-    return int(mask.sum())
+    matched = volunteers.loc[mask, ["Volunteer ID", "Name"]].drop_duplicates()
+    return matched.reset_index(drop=True)
+
+
+def count_matched_volunteers(location: str, service: str, volunteers: pd.DataFrame) -> int:
+    """Count available volunteers matching location and service type."""
+    return len(get_matched_volunteers(location, service, volunteers))
 
 
 def compute_response_status(matched: int, needed: int) -> str:
@@ -288,6 +293,73 @@ def build_response_table(alerts: pd.DataFrame, volunteers: pd.DataFrame) -> pd.D
     ).drop(columns=["_priority"])
 
     return response_df.reset_index(drop=True)
+
+
+def build_connection_table(alerts: pd.DataFrame, volunteers: pd.DataFrame) -> pd.DataFrame:
+    """
+    Build a table linking each request to matched volunteer IDs and names by service.
+    One row per alert + service with comma-separated volunteer lists.
+    """
+    exploded = explode_alert_services(alerts)
+    rows = []
+
+    for _, alert in exploded.iterrows():
+        matched = get_matched_volunteers(
+            alert["Location"], alert["Service Needed"], volunteers
+        )
+        needed = int(alert["Volunteers Needed"])
+        matched_count = len(matched)
+        status = compute_response_status(matched_count, needed)
+
+        rows.append(
+            {
+                "Alert ID": alert["Alert ID"],
+                "Alert Type": alert["Alert Type"],
+                "Alert Level": alert["Alert Level"],
+                "Location": alert["Location"],
+                "Service Needed": alert["Service Needed"],
+                "Number of People": alert["Number of People"],
+                "Volunteers Needed": needed,
+                "Matched Volunteer IDs": ", ".join(matched["Volunteer ID"].tolist()) or "—",
+                "Matched Volunteer Names": ", ".join(matched["Name"].tolist()) or "—",
+                "Matched Count": matched_count,
+                "Missing Volunteers": max(0, needed - matched_count),
+                "Response Status": status,
+            }
+        )
+
+    connection_df = pd.DataFrame(rows)
+    if connection_df.empty:
+        return connection_df
+
+    connection_df["_priority"] = connection_df["Alert Level"].map(ALERT_LEVEL_ORDER).fillna(99)
+    connection_df = connection_df.sort_values(
+        by=["_priority", "Number of People", "Volunteers Needed"],
+        ascending=[True, False, False],
+    ).drop(columns=["_priority"])
+
+    return connection_df.reset_index(drop=True)
+
+
+def sort_alerts_by_priority(alerts: pd.DataFrame) -> pd.DataFrame:
+    """Sort alert requests: High > Risk > Low, then people and volunteers desc."""
+    df = alerts.copy()
+    df["_priority"] = df["Alert Level"].map(ALERT_LEVEL_ORDER).fillna(99)
+    df = df.sort_values(
+        by=["_priority", "Number of People", "Volunteers Needed"],
+        ascending=[True, False, False],
+    ).drop(columns=["_priority"])
+    return df.reset_index(drop=True)
+
+
+def build_volunteer_list(volunteers: pd.DataFrame) -> pd.DataFrame:
+    """Combine volunteer rows into one row per person with all service types."""
+    summary = (
+        volunteers.groupby(["Volunteer ID", "Name", "Status", "Location"], as_index=False)
+        .agg({"Service Type": lambda s: ", ".join(sorted(s.unique()))})
+        .rename(columns={"Service Type": "Service Types"})
+    )
+    return summary.sort_values(["Status", "Location", "Volunteer ID"]).reset_index(drop=True)
 
 
 # ---------------------------------------------------------------------------
@@ -490,6 +562,15 @@ def render_volunteer_charts(volunteers: pd.DataFrame, kpis: dict):
         st.plotly_chart(fig, use_container_width=True)
 
 
+def style_alert_table(df: pd.DataFrame) -> pd.DataFrame.style:
+    """Apply color styling to alert level column."""
+
+    def color_alert_level(val):
+        return f"color: {COLORS.get(val, 'black')}; font-weight: bold"
+
+    return df.style.map(color_alert_level, subset=["Alert Level"])
+
+
 def style_response_table(df: pd.DataFrame) -> pd.DataFrame.style:
     """Apply color styling to alert level and response status columns."""
 
@@ -501,6 +582,253 @@ def style_response_table(df: pd.DataFrame) -> pd.DataFrame.style:
 
     return df.style.map(color_alert_level, subset=["Alert Level"]).map(
         color_response, subset=["Response Status"]
+    )
+
+
+def render_requests_tab(alerts_df: pd.DataFrame):
+    """Tab 1: Flood alert requests with full details."""
+    st.subheader("Emergency Requests")
+    st.caption("All active flood alerts with service and location details.")
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        level_filter = st.multiselect(
+            "Filter by Alert Level",
+            options=sorted(alerts_df["Alert Level"].unique()),
+            default=[],
+            key="req_level",
+        )
+    with col2:
+        loc_filter = st.multiselect(
+            "Filter by Location",
+            options=sorted(alerts_df["Location"].unique()),
+            default=[],
+            key="req_location",
+        )
+    with col3:
+        service_filter = st.multiselect(
+            "Filter by Service Needed",
+            options=sorted(
+                {s.strip() for cell in alerts_df["Service Needed"] for s in cell.split(",")}
+            ),
+            default=[],
+            key="req_service",
+        )
+
+    filtered = sort_alerts_by_priority(alerts_df)
+    if level_filter:
+        filtered = filtered[filtered["Alert Level"].isin(level_filter)]
+    if loc_filter:
+        filtered = filtered[filtered["Location"].isin(loc_filter)]
+    if service_filter:
+        filtered = filtered[
+            filtered["Service Needed"].apply(
+                lambda x: any(s.strip() in service_filter for s in x.split(","))
+            )
+        ]
+
+    display_cols = [
+        "Alert ID",
+        "Alert Type",
+        "Alert Level",
+        "Location",
+        "Service Needed",
+        "Number of People",
+        "Volunteers Needed",
+    ]
+    st.caption(f"Showing {len(filtered)} of {len(alerts_df)} requests")
+    st.dataframe(
+        style_alert_table(filtered[display_cols]),
+        use_container_width=True,
+        hide_index=True,
+    )
+
+    st.markdown("#### Request Details")
+    for _, row in filtered.head(20).iterrows():
+        with st.expander(
+            f"{row['Alert ID']} — {row['Alert Level']} — {row['Location']} ({row['Service Needed']})"
+        ):
+            c1, c2 = st.columns(2)
+            c1.markdown(f"**Alert Type:** {row['Alert Type']}")
+            c1.markdown(f"**Alert Level:** {row['Alert Level']}")
+            c1.markdown(f"**Location:** {row['Location']}")
+            c2.markdown(f"**People Affected:** {row['Number of People']}")
+            c2.markdown(f"**Volunteers Needed:** {row['Volunteers Needed']}")
+            c2.markdown(f"**Services Required:** {row['Service Needed']}")
+
+
+def render_volunteers_tab(volunteers_df: pd.DataFrame, kpis: dict):
+    """Tab 2: Volunteer roster."""
+    st.subheader("Volunteer Roster")
+    st.caption("All registered volunteers and their availability.")
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total Volunteers", volunteers_df["Volunteer ID"].nunique())
+    c2.metric("Available", kpis["total_available_volunteers"])
+    c3.metric("Not Available", kpis["not_available_volunteers"])
+    c4.metric("Locations Covered", volunteers_df["Location"].nunique())
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        status_filter = st.multiselect(
+            "Filter by Status",
+            options=sorted(volunteers_df["Status"].unique()),
+            default=[],
+            key="vol_status",
+        )
+    with col2:
+        loc_filter = st.multiselect(
+            "Filter by Location",
+            options=sorted(volunteers_df["Location"].unique()),
+            default=[],
+            key="vol_location",
+        )
+    with col3:
+        service_filter = st.multiselect(
+            "Filter by Service Type",
+            options=sorted(volunteers_df["Service Type"].unique()),
+            default=[],
+            key="vol_service",
+        )
+
+    filtered = volunteers_df.copy()
+    if status_filter:
+        filtered = filtered[filtered["Status"].isin(status_filter)]
+    if loc_filter:
+        filtered = filtered[filtered["Location"].isin(loc_filter)]
+    if service_filter:
+        filtered = filtered[filtered["Service Type"].isin(service_filter)]
+
+    volunteer_list = build_volunteer_list(filtered)
+    st.caption(f"Showing {len(volunteer_list)} volunteers")
+    st.dataframe(volunteer_list, use_container_width=True, hide_index=True)
+
+
+def render_matching_tab(connection_df: pd.DataFrame):
+    """Tab 3: Connect volunteers to requests by service and location."""
+    st.subheader("Volunteer–Request Matching")
+    st.caption(
+        "Each row links a request to available volunteers who match the location and required service."
+    )
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        level_filter = st.multiselect(
+            "Alert Level",
+            options=sorted(connection_df["Alert Level"].unique()),
+            default=[],
+            key="match_level",
+        )
+    with col2:
+        loc_filter = st.multiselect(
+            "Location",
+            options=sorted(connection_df["Location"].unique()),
+            default=[],
+            key="match_location",
+        )
+    with col3:
+        service_filter = st.multiselect(
+            "Service Needed",
+            options=sorted(connection_df["Service Needed"].unique()),
+            default=[],
+            key="match_service",
+        )
+    with col4:
+        status_filter = st.multiselect(
+            "Response Status",
+            options=VALID_RESPONSE_STATUSES,
+            default=[],
+            key="match_status",
+        )
+
+    filtered = apply_filters(connection_df, level_filter, loc_filter, service_filter, status_filter)
+
+    display_cols = [
+        "Alert ID",
+        "Alert Level",
+        "Location",
+        "Service Needed",
+        "Volunteers Needed",
+        "Matched Volunteer IDs",
+        "Matched Volunteer Names",
+        "Matched Count",
+        "Missing Volunteers",
+        "Response Status",
+    ]
+    st.caption(f"Showing {len(filtered)} of {len(connection_df)} connections")
+    st.dataframe(
+        style_response_table(filtered[display_cols]),
+        use_container_width=True,
+        hide_index=True,
+    )
+
+    # Highlight uncovered requests
+    uncovered = filtered[filtered["Response Status"] == "Not Covered"]
+    if not uncovered.empty:
+        st.warning(f"{len(uncovered)} request-service pairs have no available volunteers.")
+        st.dataframe(
+            uncovered[["Alert ID", "Location", "Service Needed", "Volunteers Needed"]],
+            use_container_width=True,
+            hide_index=True,
+        )
+
+
+def render_report_tab(
+    alerts_df: pd.DataFrame,
+    volunteers_df: pd.DataFrame,
+    response_df: pd.DataFrame,
+    connection_df: pd.DataFrame,
+    kpis: dict,
+):
+    """Tab 4: Summary report with KPIs, charts, and coverage breakdown."""
+    st.subheader("Report & Summary")
+
+    render_kpi_row(kpis)
+    st.divider()
+
+    # Coverage summary
+    st.markdown("#### Response Coverage")
+    col1, col2, col3 = st.columns(3)
+    status_counts = response_df["Response Status"].value_counts()
+    col1.metric("Covered", status_counts.get("Covered", 0))
+    col2.metric("Partially Covered", status_counts.get("Partially Covered", 0))
+    col3.metric("Not Covered", status_counts.get("Not Covered", 0))
+
+    # Pie chart for response status
+    if not response_df.empty:
+        pie_df = status_counts.reset_index()
+        pie_df.columns = ["Response Status", "Count"]
+        fig = px.pie(
+            pie_df,
+            names="Response Status",
+            values="Count",
+            title="Response Status Distribution",
+            color="Response Status",
+            color_discrete_map=COLORS,
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    st.markdown("#### High Priority Alerts")
+    high_priority = response_df[response_df["Alert Level"] == "High"].head(10)
+    if high_priority.empty:
+        st.info("No High-level alerts at this time.")
+    else:
+        st.dataframe(style_response_table(high_priority), use_container_width=True, hide_index=True)
+
+    st.divider()
+    render_alert_charts(alerts_df, response_df)
+
+    st.divider()
+    render_volunteer_charts(volunteers_df, kpis)
+
+    st.divider()
+    st.markdown("#### Full Response Table")
+    st.dataframe(
+        style_response_table(response_df),
+        use_container_width=True,
+        hide_index=True,
     )
 
 
@@ -571,6 +899,7 @@ def main():
 
         # Build response table and KPIs
         response_df = build_response_table(alerts_df, volunteers_df)
+        connection_df = build_connection_table(alerts_df, volunteers_df)
         kpis = compute_kpis(alerts_df, volunteers_df)
 
     except ValueError as exc:
@@ -580,74 +909,29 @@ def main():
         st.error(f"Failed to load data: {exc}")
         st.stop()
 
-    # --- KPI cards ---
-    render_kpi_row(kpis)
-
-    st.divider()
-
-    # --- High priority alerts ---
-    st.subheader("High Priority Alerts")
-    high_priority = response_df[response_df["Alert Level"] == "High"].head(10)
-    if high_priority.empty:
-        st.info("No High-level alerts at this time.")
-    else:
-        st.dataframe(style_response_table(high_priority), use_container_width=True, hide_index=True)
-
-    st.divider()
-
-    # --- Alert charts ---
-    render_alert_charts(alerts_df, response_df)
-
-    st.divider()
-
-    # --- Volunteer charts ---
-    render_volunteer_charts(volunteers_df, kpis)
-
-    st.divider()
-
-    # --- Filters and response table ---
-    st.subheader("Response Matching Table")
-
-    col_f1, col_f2, col_f3, col_f4 = st.columns(4)
-    with col_f1:
-        filter_levels = st.multiselect(
-            "Alert Level",
-            options=sorted(response_df["Alert Level"].unique()),
-            default=[],
-            placeholder="All levels",
-        )
-    with col_f2:
-        filter_locations = st.multiselect(
-            "Location",
-            options=sorted(response_df["Location"].unique()),
-            default=[],
-            placeholder="All locations",
-        )
-    with col_f3:
-        filter_services = st.multiselect(
-            "Service Needed",
-            options=sorted(response_df["Service Needed"].unique()),
-            default=[],
-            placeholder="All services",
-        )
-    with col_f4:
-        filter_status = st.multiselect(
-            "Response Status",
-            options=VALID_RESPONSE_STATUSES,
-            default=[],
-            placeholder="All statuses",
-        )
-
-    filtered_response = apply_filters(
-        response_df, filter_levels, filter_locations, filter_services, filter_status
+    # --- Tabbed interface ---
+    tab_requests, tab_volunteers, tab_matching, tab_report = st.tabs(
+        [
+            "Requests",
+            "Volunteers",
+            "Matching",
+            "Report & Summary",
+        ]
     )
 
-    st.caption(f"Showing {len(filtered_response)} of {len(response_df)} alert-service rows")
-    st.dataframe(
-        style_response_table(filtered_response),
-        use_container_width=True,
-        hide_index=True,
-    )
+    with tab_requests:
+        render_requests_tab(alerts_df)
+
+    with tab_volunteers:
+        render_volunteers_tab(volunteers_df, kpis)
+
+    with tab_matching:
+        render_matching_tab(connection_df)
+
+    with tab_report:
+        render_report_tab(
+            alerts_df, volunteers_df, response_df, connection_df, kpis
+        )
 
 
 if __name__ == "__main__":
