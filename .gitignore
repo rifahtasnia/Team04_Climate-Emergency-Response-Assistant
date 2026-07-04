@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.env.local
+web/.env
+web/.env.local
+web/node_modules/
+web/dist/
+web/test-results/
+outputs/

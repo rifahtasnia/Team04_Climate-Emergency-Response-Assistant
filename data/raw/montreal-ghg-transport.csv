@@ -1,0 +1,80 @@
+Year,Sector,GPC ref No.,Scope,Category,Sub-category,Activity,Description,CO2,CH4,N2O,Total tCO2e,CO2(b),Data Quality
+1990,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Fuel sales approach,,2666724,11848,144676,2823248,0,L
+1990,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Fuel sales approach,,721994,539,16050,738583,0,L
+1990,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,133092,171,15254,148517,0,L
+1990,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,119399,615,2094,122108,0,M
+1990,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,566785,1019,4641,572445,0,M
+1990,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),28370,126,1539,30036,0,L
+2015,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,2631936,144869,21755,2798561,0,M
+2015,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,848933,578,2076,851587,0,M
+2015,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,0,794,19509,20302,149584,M
+2015,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,0,11,424,435,15979,M
+2015,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,83395,119,9834,93349,0,L
+2015,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,319859,758,2855,323472,0,L
+2015,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,805107,547,7011,812665,0,L
+2015,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),25419,1399,210,27028,0,M
+2015,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,8199,6,20,8224,0,M
+2015,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,8,188,196,1445,M
+2015,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,0,4,4,154,M
+2016,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,2425736,133519,20051,2579306,0,M
+2016,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,739035,503,1808,741346,0,M
+2016,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,0,29,60,90,137865,M
+2016,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,0,0,1,2,13910,M
+2016,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,78024,112,9215,87351,0,L
+2016,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,358594,851,3179,362623,0,L
+2016,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,804705,563,7028,812296,0,L
+2016,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),22960,1264,190,24413,0,M
+2016,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,6995,5,17,7017,0,M
+2016,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,0,1,1,1305,M
+2016,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,0,0,0,132,M
+2017,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,2574566,141711,21281,2737558,0,M
+2017,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,782499,533,1914,784945,0,M
+2017,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,0,672,16519,17191,126657,M
+2017,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,0,10,391,401,14728,M
+2017,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,86843,124,10203,97169,0,L
+2017,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,379312,899,3301,383511,0,L
+2017,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,888740,580,7729,897049,0,L
+2017,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),24841,1367,205,26413,0,M
+2017,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,7550,5,18,7574,0,M
+2017,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,6,159,166,1222,M
+2017,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,0,4,4,142,M
+2018,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,,,,3619240,,H
+2018,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,113462,161,13276,126899,0,L
+2018,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,403626,964,3379,407968,0,L
+2018,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,976388,527,8372,985287,0,L
+2018,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),21560,1187,178,22925,0,M
+2018,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,6809,5,17,6830,0,M
+2018,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,6,138,144,1061,M
+2018,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,0,3,3,128,M
+2019,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,,,,3783920,,H
+2019,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,116072,165,13559,129795,0,L
+2019,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,469682,1108,3823,474613,0,L
+2019,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,993800,601,8598,1002998,0,L
+2019,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),23544,1296,195,25034,0,M
+2019,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,7644,5,19,7668,0,M
+2019,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,6,151,157,1158,M
+2019,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,0,6,6,218,M
+2020,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,,,,2526630,,H
+2020,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,107786,153,12570,120509,0,L
+2020,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,386171,912,3020,390104,0,L
+2020,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,515639,422,4699,520761,0,L
+2020,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),18840,1037,156,20032,0,M
+2020,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,6480,4,16,6501,0,M
+2020,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,5,121,126,927,M
+2020,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,0,5,5,185,M
+2021,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,,,,2989660,,H
+2021,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,105635,149,12298,118082,0,L
+2021,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,415373,986,3359,419719,0,L
+2021,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,575760,474,5086,581319,0,L
+2021,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),20370,1121,168,21660,0,M
+2021,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,7963,5,19,7988,0,M
+2021,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,5,131,136,1002,M
+2021,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,2,6,8,227,M
+2022,Transport,II.1.1,1,Emissions from fuel combustion on-road transportation occurring in the city,Multiple,Geographic / Territorial,,,,,3427800,,H
+2022,Transport,II.2.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Multiple,Geographic / Territorial,,105226,149,12250,117624,0,L
+2022,Transport,II.3.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",Transboundary departures,Geographic / Territorial,,406109,964,3284,410357,0,L
+2022,Transport,II.4.3,3,"Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",All departing flights,Geographic / Territorial,,697676,574,6163,704413,0,L
+2022,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Motor gasoline (petrol),20946,1153,173,22272,0,M
+2022,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Diesel oil,6625,5,16,6646,0,M
+2022,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Ethanol,0,6,155,162,1190,M
+2022,Transport,II.5.1,1,Emissions from fuel combustion for off-road transportation occurring in the city,Multiple,,Biodiesels,0,1,5,6,189,M

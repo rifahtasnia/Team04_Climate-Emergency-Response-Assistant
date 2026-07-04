@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AEGIS Pitch Deck</title>
+  <style>
+    @page { size: 13.333in 7.5in; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #111827; background: #e9edf0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .slide { width: 13.333in; height: 7.5in; position: relative; overflow: hidden; padding: .62in .72in; background: #f9fafb; page-break-after: always; }
+    .slide:last-child { page-break-after: auto; }
+    .kicker { margin: 0 0 .16in; color: #64748b; font: 600 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .16em; }
+    h1 { max-width: 10.8in; margin: 0; font-size: 42px; line-height: 1.04; letter-spacing: -.045em; }
+    h2 { margin: 0; font-size: 25px; line-height: 1.1; letter-spacing: -.03em; }
+    p { margin: 0; color: #526071; font-size: 16px; line-height: 1.5; }
+    .sub { max-width: 7.5in; margin-top: .24in; font-size: 18px; }
+    .brand { position: absolute; top: .46in; right: .65in; display: flex; align-items: center; gap: 8px; font-weight: 750; letter-spacing: .18em; }
+    .mark { width: 28px; height: 28px; display: grid; place-items: center; color: #111827; background: #eef2f5; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 800; }
+    .footer { position: absolute; left: .72in; right: .72in; bottom: .3in; display: flex; justify-content: space-between; color: #7b8795; font-size: 9px; }
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: .6in; align-items: center; height: 100%; padding-top: .25in; }
+    .signal { position: relative; height: 4.7in; border: 1px solid #dbe1e7; border-radius: 18px; background: white; box-shadow: 0 20px 60px rgba(15,23,42,.09); }
+    .signal:before,.signal:after { content:""; position:absolute; border-radius:50%; border:2px solid #ef4444; }
+    .signal:before { width: 120px; height:120px; left:50%; top:50%; transform:translate(-50%,-50%); opacity:.18; }
+    .signal:after { width: 18px; height:18px; left:50%; top:50%; transform:translate(-50%,-50%); background:#ef4444; box-shadow: 0 0 0 12px #fee2e2; }
+    .node { position:absolute; padding: 10px 13px; color:#334155; background:#f8fafc; border:1px solid #dbe1e7; border-radius:9px; font-size:11px; }
+    .n1{left:.35in;top:.55in}.n2{right:.3in;top:1.2in}.n3{left:.55in;bottom:.55in}.n4{right:.45in;bottom:.7in}
+    .rail { display:grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top:.55in; background:#dbe1e7; border:1px solid #dbe1e7; border-radius:14px; overflow:hidden; }
+    .rail article { min-height:3.6in; padding:.32in; background:#fff; }
+    .rail strong { display:block; margin:.28in 0 .12in; font-size:22px; }
+    .rail small { color:#64748b; font-size:11px; letter-spacing:.08em; }
+    .rail ul { margin:.25in 0 0; padding-left:.18in; color:#526071; font-size:13px; line-height:1.75; }
+    .flow { display:grid; grid-template-columns: repeat(5,1fr); gap:.18in; align-items:center; margin-top:.7in; }
+    .step { min-height:2.4in; padding:.23in; background:#fff; border:1px solid #dbe1e7; border-radius:13px; }
+    .step .num { width:25px;height:25px;display:grid;place-items:center;margin-bottom:.24in;border-radius:50%;background:#111827;color:white;font-size:11px; }
+    .step p { margin-top:.14in; font-size:12px; }
+    .arrow { position:absolute; right:-.14in; top:1.05in; color:#94a3b8; font-size:20px; z-index:2; }
+    .agent-map { display:grid; grid-template-columns: 1fr .9fr 1fr; gap:.25in; margin-top:.45in; align-items:center; }
+    .agent-col { display:grid; gap:.12in; }
+    .agent { padding:.16in .18in; background:#fff; border:1px solid #dbe1e7; border-radius:9px; font-size:12px; }
+    .core { padding:.35in; text-align:center; background:#111827; color:white; border-radius:16px; }
+    .core p { margin-top:.12in; color:#cbd5e1; font-size:12px; }
+    .data-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:.4in; margin-top:.35in; }
+    .stack { padding:.27in; background:white; border:1px solid #dbe1e7; border-radius:13px; }
+    .stack-row { display:grid; grid-template-columns:1.2fr .8fr; gap:.15in; padding:.13in 0; border-bottom:1px solid #e5e7eb; font-size:12px; }
+    .stack-row:last-child{border:0}.stack-row span:last-child{text-align:right;color:#64748b}
+    .metrics { display:grid; grid-template-columns:repeat(2,1fr); gap:.12in; }
+    .metric { padding:.22in; background:#fff; border:1px solid #dbe1e7; border-radius:12px; }
+    .metric strong { display:block; font-size:27px; }.metric span{color:#64748b;font-size:11px}
+    .guardrails { display:grid; grid-template-columns: 1.2fr .8fr; gap:.5in; margin-top:.4in; }
+    .timeline { display:grid; gap:.17in; }
+    .event { display:grid; grid-template-columns:.9in 1fr; gap:.18in; padding-bottom:.16in; border-bottom:1px solid #dbe1e7; }
+    .event strong{font-size:12px}.event span{font-size:12px;color:#64748b}
+    .rules { padding:.3in; color:white; background:#111827; border-radius:16px; }
+    .rules div{padding:.14in 0;border-bottom:1px solid #334155;font-size:13px}.rules div:last-child{border:0}
+    .close { display:grid; grid-template-columns:1.15fr .85fr; gap:.55in; align-items:center; height:100%; }
+    .close h1 { font-size:49px; }
+    .ask { padding:.38in; background:white; border:1px solid #dbe1e7; border-radius:16px; box-shadow:0 18px 50px rgba(15,23,42,.08); }
+    .ask strong { display:block; font-size:20px; margin-bottom:.14in; }.ask p{font-size:13px}
+    .implemented { display:inline-block; margin-top:.25in; padding:7px 10px; color:#166534; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:999px; font-size:11px; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div class="brand"><span class="mark">A</span>AEGIS</div>
+    <div class="hero">
+      <div>
+        <p class="kicker">CLIMATE EMERGENCY RESPONSE</p>
+        <h1>From a flood report to coordinated help—in minutes, not fragmented handoffs.</h1>
+        <p class="sub">One response network for affected residents, community capacity, and accountable municipal coordination.</p>
+        <span class="implemented">Working end-to-end application</span>
+      </div>
+      <div class="signal">
+        <span class="node n1">Resident request</span><span class="node n2">Verified volunteer</span>
+        <span class="node n3">Available shelter</span><span class="node n4">Authorized response</span>
+      </div>
+    </div>
+    <div class="footer"><span>Team 04 · AEGIS</span><span>01</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">THE FAILURE TODAY</p>
+    <h1>The people who need help and the people who can help are visible in different systems.</h1>
+    <p class="sub">Flood response breaks at the coordination layer: alerts, resident needs, volunteer capacity, shelter space, routes, and authorizations arrive separately.</p>
+    <div class="rail">
+      <article><small>AFFECTED RESIDENT</small><strong>“Where is safe—and is help coming?”</strong><ul><li>Medical and mobility needs</li><li>Transport and accommodation</li><li>Location-specific guidance</li></ul></article>
+      <article><small>COMMUNITY CAPACITY</small><strong>“Who needs what I can provide?”</strong><ul><li>Skills and travel radius</li><li>Available shelter spaces</li><li>Verification and status</li></ul></article>
+      <article><small>COORDINATOR</small><strong>“What is true, urgent, and authorized?”</strong><ul><li>Conflicting reports</li><li>Multiple resource matches</li><li>Audit and accountability</li></ul></article>
+    </div>
+    <div class="footer"><span>Problem framing</span><span>02</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">ONE CONNECTED JOURNEY</p>
+    <h1>AEGIS turns a request into a verified, multi-resource response.</h1>
+    <div class="flow">
+      <div class="step"><span class="num">1</span><h2>Request</h2><p>Resident shares exact location, needs, and vulnerability factors.</p><span class="arrow">→</span></div>
+      <div class="step"><span class="num">2</span><h2>Assess</h2><p>Signals are grouped; urgency, confidence, and risk stay distinct.</p><span class="arrow">→</span></div>
+      <div class="step"><span class="num">3</span><h2>Match</h2><p>Verified volunteers, shelters, and response capabilities are combined.</p><span class="arrow">→</span></div>
+      <div class="step"><span class="num">4</span><h2>Authorize</h2><p>A human confirms evidence, staging sites, route, and warning content.</p><span class="arrow">→</span></div>
+      <div class="step"><span class="num">5</span><h2>Track</h2><p>Residents see status; every recommendation and decision is recorded.</p></div>
+    </div>
+    <div class="footer"><span>Resident → community → coordinator</span><span>03</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">AGENTIC WORKFLOW</p>
+    <h1>Specialized agents reduce noise; humans retain consequential authority.</h1>
+    <div class="agent-map">
+      <div class="agent-col">
+        <div class="agent"><strong>Alert aggregation</strong><br/>Official, weather, and community provenance</div>
+        <div class="agent"><strong>Risk assessment</strong><br/>Urgency and confidence classification</div>
+        <div class="agent"><strong>Vulnerability priority</strong><br/>Mobility, medical, child, transport signals</div>
+      </div>
+      <div class="core"><h2>Shared incident record</h2><p>Evidence · location · needs · matches · decisions</p></div>
+      <div class="agent-col">
+        <div class="agent"><strong>Resident guidance</strong><br/>Location-specific protective actions</div>
+        <div class="agent"><strong>Volunteer coordination</strong><br/>Skills, distance, capacity, verification</div>
+        <div class="agent"><strong>Aid routing + summary</strong><br/>Multi-resource plan for coordinator review</div>
+      </div>
+    </div>
+    <div class="footer"><span>AI recommends · people authorize</span><span>04</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">REAL INPUTS, EXPLICIT PROVENANCE</p>
+    <h1>The map and response are generated from live services and user-supplied facts—not a fixed city.</h1>
+    <div class="data-grid">
+      <div class="stack">
+        <div class="stack-row"><strong>Exact locations</strong><span>Nominatim / OpenStreetMap</span></div>
+        <div class="stack-row"><strong>Current weather</strong><span>Open-Meteo</span></div>
+        <div class="stack-row"><strong>Road routing</strong><span>OSRM</span></div>
+        <div class="stack-row"><strong>Staging candidates</strong><span>Overpass public-safety sites</span></div>
+        <div class="stack-row"><strong>Incident assessment</strong><span>Gemini 3.5 Flash + rules fallback</span></div>
+        <div class="stack-row"><strong>Requests and offers</strong><span>Resident / partner intake</span></div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>169,109</strong><span>labelled disaster reports analyzed</span></div>
+        <div class="metric"><strong>81,883</strong><span>relevant disaster records</span></div>
+        <div class="metric"><strong>1,023</strong><span>resident survey responses</span></div>
+        <div class="metric"><strong>54</strong><span>countries in climate indicators</span></div>
+      </div>
+    </div>
+    <div class="footer"><span>Dataset summary generated from supplied files</span><span>05</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">RESPONSIBLE BY DESIGN</p>
+    <h1>AEGIS never turns uncertainty into authority.</h1>
+    <div class="guardrails">
+      <div class="timeline">
+        <div class="event"><strong>COMMUNITY</strong><span>Raw report stays attributed and can remain unverified.</span></div>
+        <div class="event"><strong>AI</strong><span>Recommendation records confidence, evidence, and unresolved claims.</span></div>
+        <div class="event"><strong>HUMAN</strong><span>Coordinator verifies incident, resources, route, and warning content.</span></div>
+        <div class="event"><strong>AUDIT</strong><span>Every change is timestamped and separated by actor type.</span></div>
+      </div>
+      <div class="rules">
+        <div>Confidence ≠ severity</div>
+        <div>Suggested site ≠ confirmed availability</div>
+        <div>Community report ≠ official alert</div>
+        <div>Warning approval ≠ delivery without a provider</div>
+      </div>
+    </div>
+    <div class="footer"><span>Human-supervised emergency coordination</span><span>06</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="brand"><span class="mark">A</span>AEGIS</div>
+    <div class="close">
+      <div>
+        <p class="kicker">THE DEMONSTRATION</p>
+        <h1>Watch one resident request become an accountable response.</h1>
+        <p class="sub">Submit a need. Offer community capacity. Verify the evidence. Select multiple staging sites. Match resources. Approve the plan.</p>
+      </div>
+      <div class="ask">
+        <strong>What AEGIS proves today</strong>
+        <p>A city-independent, role-based response network can connect live location services, agentic assessment, community capacity, and human authorization in one coherent flow.</p>
+      </div>
+    </div>
+    <div class="footer"><span>AEGIS · Help reaches people through coordination</span><span>07</span></div>
+  </section>
+</body>
+</html>

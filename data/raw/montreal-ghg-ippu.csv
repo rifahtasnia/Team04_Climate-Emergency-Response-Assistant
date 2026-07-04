@@ -1,0 +1,37 @@
+Year,Sector,GPC ref No.,Scope,Category,Sub-category,Activity,CO2,CH4,N2O,PFC,HFC,SF6,NF3,Total tCO2e,CO2(b),Data Quality
+1990,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,"Oil and gas, Chemical & others",35288,0,0,0,0,0,0,35288,0,H
+1990,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,15,0,404,85,504,0,M
+1990,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,450477,0,20443,0,0,0,0,473545,0,M
+1990,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,11319,0,0,9578,0,20897,0,M
+2015,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,77404,232,0,0,0,0,0,77636,0,M
+2015,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1370,524685,3202,3,529259,0,M
+2015,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,195918,0,0,0,0,0,0,195918,0,M
+2015,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,18653,523,0,17626,0,36803,0,M
+2016,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,79767,605,0,0,0,0,0,80372,0,M
+2016,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1512,536048,2779,34,540372,0,M
+2016,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,163017,0,0,0,0,0,0,163017,0,M
+2016,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,21237,512,0,19346,0,41096,0,M
+2017,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,78452,820,0,0,0,0,0,79272,0,M
+2017,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1903,521938,3097,56,526994,0,M
+2017,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,180145,0,0,0,0,0,0,180145,0,M
+2017,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,25978,500,0,5243,0,31720,0,M
+2018,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,82436,829,15,0,0,0,0,83280,74896,M
+2018,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1690,580103,2414,83,584290,0,M
+2018,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,189988,0,0,0,0,0,0,189988,0,M
+2018,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,28336,1448,0,14002,0,43786,0,M
+2019,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,70234,525,8,0,0,0,0,70766,72422,M
+2019,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1513,582315,2378,81,586287,0,M
+2019,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,201523,0,0,0,0,0,0,201523,0,M
+2019,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,28459,1948,0,9135,0,39541,0,M
+2020,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,65372,186,2,0,0,0,0,65561,26150,M
+2020,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1753,568412,3742,149,574055,0,M
+2020,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,192614,0,0,0,0,0,0,192614,0,M
+2020,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,29385,1600,0,16642,0,47628,0,M
+2021,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,82155,254,2,0,0,0,0,82412,71852,M
+2021,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1702,542200,3434,145,547481,0,M
+2021,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,193503,0,0,0,0,0,0,193503,0,M
+2021,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,29151,1285,0,16284,0,46719,0,M
+2022,IPPU,IV.1,1,Emissions from industrial processes occurring in the city boundary,All industrial processes,,73450,276,3,0,0,0,0,73729,72322,M
+2022,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Product_uses_as_substitutes_for_ozone_depleting_substances,,0,0,0,1695,540100,3420,144,545360,0,M
+2022,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Non_energy_products_from_fuels_and_solvent_use,Mainly from chemical and petrochemical activities,192753,0,0,0,0,0,0,"192,753",0,M
+2022,IPPU,IV.2,1,Emissions from product use occurring within the city boundary,Other_product_manufacture_and_use,,0,0,29038,1280,0,16221,0,46538,0,M

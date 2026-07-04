@@ -1,0 +1,80 @@
+{
+  "natural_disasters_from_social_media": {
+    "records": 169109,
+    "relevant": 81883,
+    "flood_reports": 22192,
+    "top_labels": [
+      [
+        "target_zero",
+        39398
+      ],
+      [
+        "informative",
+        14590
+      ],
+      [
+        "not_informative",
+        10281
+      ],
+      [
+        "off-topic",
+        10101
+      ],
+      [
+        "other_relevant_information",
+        9089
+      ],
+      [
+        "on-topic",
+        7836
+      ],
+      [
+        "not_relevant",
+        7122
+      ],
+      [
+        "injured_or_dead_people",
+        6209
+      ],
+      [
+        "infrastructure_and_utility_damage",
+        6128
+      ],
+      [
+        "relevant",
+        4880
+      ],
+      [
+        "not_humanitarian",
+        4542
+      ],
+      [
+        "caution_and_advice",
+        4475
+      ]
+    ]
+  },
+  "toronto_current_and_future_climate": {
+    "rows": 27,
+    "columns": 58,
+    "baseline_maximum_one_day_precipitation_mm": 37.3,
+    "future_maximum_one_day_precipitation_mm": 47.5,
+    "future_days_above_35c": 22.6
+  },
+  "transformto_resident_survey": {
+    "responses": 1023,
+    "fields": 57,
+    "equitable_forest_support": 597,
+    "climate_lens_support": 628
+  },
+  "montreal_ghg_inventory": {
+    "sectors": 5,
+    "latest_year": 2022,
+    "latest_total_tco2e": 11098879
+  },
+  "african_climate_indicators": {
+    "countries": 54,
+    "first_year": 1960,
+    "last_year": 2024
+  }
+}

@@ -1,0 +1,36 @@
+Year,Sector,GPC ref No.,Scope,Category,Sub-category,Activity,CO2,CH4,N2O,Total tCO2e,CO2(b),Data Quality
+1990,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation and Manure management,0,743,110,853,0,L
+1990,AFOLU,V.2,1,Emissions from land,All land,Emissions from agricultural soil management                                        ,0,0,488,488,0,L
+1990,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,Emissions from aggregate sources and non-CO2 emission sources on land                                        ,43,0,0,43,0,L
+2015,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2483,0,2483,0,L
+2015,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1096,467,1564,0,L
+2015,AFOLU,V.2,1,Emissions from land,All land,,0,0,3230,3230,0,L
+2015,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,209,0,0,209,0,L
+2016,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2478,0,2478,0,L
+2016,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1141,471,1612,0,L
+2016,AFOLU,V.2,1,Emissions from land,All land,,0,0,3184,3184,0,L
+2016,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,243,0,0,243,0,L
+2017,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2483,0,2483,0,L
+2017,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1143,469,1611,0,L
+2017,AFOLU,V.2,1,Emissions from land,All land,,0,0,2742,2742,0,L
+2017,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,184,0,0,184,0,L
+2018,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2516,0,2516,0,L
+2018,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1139,566,1705,0,L
+2018,AFOLU,V.2,1,Emissions from land,All land,,0,0,3395,3395,0,L
+2018,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,229,0,0,229,0,L
+2019,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2549,0,2549,0,L
+2019,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1149,470,1619,0,L
+2019,AFOLU,V.2,1,Emissions from land,All land,,0,0,3114,3114,0,L
+2019,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,209,0,0,209,0,L
+2020,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2548,0,2548,0,L
+2020,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1148,468,1617,0,L
+2020,AFOLU,V.2,1,Emissions from land,All land,,0,0,3394,3394,0,L
+2020,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,219,0,0,219,0,L
+2021,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2416,0,2416,0,L
+2021,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1135,440,1576,0,L
+2021,AFOLU,V.2,1,Emissions from land,All land,,0,0,3189,3189,0,L
+2021,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,202,0,0,202,0,L
+2022,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Enteric fermentation,0,2520,0,2520,0,L
+2022,AFOLU,V.1,1,Emissions from livestock,All livestock (3.A),Manure management,0,1184,459,1643,0,L
+2022,AFOLU,V.2,1,Emissions from land,All land,,0,0,3325,3325,0,L
+2022,AFOLU,V.3,1,Emissions from aggregate sources and non-CO2 emission sources on land,Liming,,211,0,0,211,0,L
